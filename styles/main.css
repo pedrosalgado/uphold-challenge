@@ -1,0 +1,84 @@
+.app-container {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 20px;
+}
+
+.app-title {
+  color: #2c3e50;
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.app-description {
+  color: #7f8c8d;
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+.input-container {
+  margin: 20px auto;
+  width: 300px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.amount-input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.currency-select {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.helper-text {
+  color: #95a5a6;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+}
+
+.rates-container {
+  margin-top: 20px;
+}
+
+.loading-text {
+  color: #7f8c8d;
+  font-size: 1rem;
+}
+
+.rates-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.rate-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 300px;
+  padding: 10px;
+  border: 1px solid #ecf0f1;
+  border-radius: 4px;
+  background-color: #fafafa;
+}
+
+.currency-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.currency-rate {
+  font-size: 1.1rem;
+  color: #2c3e50;
+}
