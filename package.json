@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint && prettier --check .",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "test": "jest"
   },
   "dependencies": {
     "@uphold/uphold-sdk-javascript": "^2.4.0",
@@ -16,10 +17,36 @@
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
+    "@swc/jest": "^0.2.37",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.2.0",
+    "@testing-library/user-event": "^14.6.1",
+    "cypress": "^14.0.0",
     "eslint": "^9.19.0",
     "eslint-config-next": "^15.1.6",
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-prettier": "^5.2.3",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "jest-fetch-mock": "^3.0.3",
     "prettier": "^3.4.2"
+  },
+  "jest": {
+    "setupFiles": [
+      "jest-fetch-mock"
+    ],
+    "setupFilesAfterEnv": [
+      "@testing-library/jest-dom"
+    ],
+    "testEnvironment": "jest-environment-jsdom",
+    "transform": {
+      "^.+\\.(js|jsx|ts|tsx)$": "@swc/jest"
+    },
+    "moduleNameMapper": {
+      "\\.(css|less|scss|sass)$": "identity-obj-proxy",
+      "@/components/(.*)": "<rootDir>/components/$1",
+      "@/hooks/(.*)": "<rootDir>/hooks/$1"
+    }
   }
 }

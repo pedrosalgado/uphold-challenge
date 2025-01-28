@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import '../styles/currencyDropdown.css';
 
-const CustomDropdown = ({ currencies, baseCurrency, setBaseCurrency }) => {
+const CurrencyDropdown = ({ currencies, baseCurrency, setBaseCurrency }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const selectedCurrency = currencies.find((cur) => cur.code === baseCurrency);
@@ -11,8 +11,6 @@ const CustomDropdown = ({ currencies, baseCurrency, setBaseCurrency }) => {
     setBaseCurrency(code);
     setIsOpen(false);
   };
-
-  // console.log(currencies);
 
   return (
     <div className="dropdown">
@@ -56,4 +54,4 @@ const CustomDropdown = ({ currencies, baseCurrency, setBaseCurrency }) => {
   );
 };
 
-export default CustomDropdown;
+export default CurrencyDropdown;

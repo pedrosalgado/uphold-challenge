@@ -2,6 +2,17 @@
   font-family: Arial, sans-serif;
   text-align: center;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 340px);
+  box-sizing: border-box;
+}
+
+.app-content {
+  flex: 1;
+  padding: 20px;
+  overflow: hidden;
+
 }
 
 .app-title {
@@ -47,6 +58,7 @@
 
 .rates-container {
   margin-top: 20px;
+  overflow: auto;
 }
 
 .loading-text {
