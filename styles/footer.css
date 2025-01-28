@@ -1,5 +1,5 @@
 .footer {
-    padding: 20px;
+    padding: 50px 20px;
     text-align: center;
     position: fixed;
     bottom: 0;
@@ -9,7 +9,7 @@
     color: #333;
     background-color: #ffffff;
     box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
-    height: 280px; /* Adjust based on your actual footer height */
+    height: 280px;
     flex-shrink: 0;
 
     .footer-links {
@@ -26,7 +26,7 @@
     }
 
     .footer-links h4 {
-        margin-bottom: 10px;
+        margin-bottom: 20px;
         font-size: 1.2rem;
         color: #404040;
     }
@@ -45,17 +45,19 @@
 
     .footer-icons {
         display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .top-icons {
+        display: flex;
         justify-content: center;
-        gap: 20px;
+        gap: 10px;
     }
 
     .footer-icons img {
-        height: 40px;
         cursor: pointer;
         transition: transform 0.3s ease;
-    }
-
-    .footer-icons img:hover {
-        transform: scale(1.1);
     }
 }

@@ -17,6 +17,10 @@
   cursor: pointer;
 }
 
+.dropdown-arrow {
+  margin-left: 10px;
+}
+
 .dropdown-menu {
   position: absolute;
   top: 100%;

@@ -34,23 +34,28 @@ const Footer = () => {
           <a href="#">Instagram</a>
           <a href="#">LinkedIn</a>
         </div>
-        <div>
+        <div className="footer-icons">
+          <div className="top-icons">
+            <Image
+              src="/assets/playstore.svg"
+              alt="Play Store"
+              width={20}
+              height={20}
+            />
+            <Image
+              src="/assets/appstore.svg"
+              alt="App Store"
+              width={20}
+              height={20}
+            />
+          </div>
           <Image
-            src="/assets/playstore.svg"
-            alt="Play Store"
-            width={20}
-            height={20}
-          />
-          <Image
-            src="/assets/appstore.svg"
-            alt="App Store"
-            width={20}
-            height={20}
+            src="/assets/qr-code.svg"
+            alt="QR Code"
+            width={40}
+            height={40}
           />
         </div>
-      </div>
-      <div className="footer-icons">
-        <Image src="/assets/qr-code.svg" alt="QR Code" width={50} height={50} />
       </div>
     </footer>
   );

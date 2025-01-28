@@ -10,9 +10,9 @@ import CurrencyDropdown from '@/components/currencyDropdown';
 import { useDebounce } from '@/hooks/useDebounce';
 
 const sdk = new SDK({
-  baseUrl: 'http://api-sandbox.uphold.com',
-  clientId: 'foo',
-  clientSecret: 'bar',
+  baseUrl: process.env.NEXT_PUBLIC_UPHOLD_BASE_URL,
+  clientId: process.env.NEXT_PUBLIC_UPHOLD_CLIENT_ID,
+  clientSecret: process.env.NEXT_PUBLIC_UPHOLD_CLIENT_SECRET,
 });
 
 const MAX_CACHE_SIZE = 10;
@@ -23,12 +23,12 @@ const App = () => {
   const [exchangeRates, setExchangeRates] = useState([]);
   const [baseCurrency, setBaseCurrency] = useState('USD');
   const [amount, setAmount] = useState(0);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [hasInteracted, setHasInteracted] = useState(false);
 
   useEffect(() => {
     const fetchCurrencies = async () => {
       try {
-        // Fetch available currencies
         const response = await fetch('/api/assets');
         if (!response.ok) {
           throw new Error(`Error fetching assets: ${response.status}`);
@@ -49,17 +49,18 @@ const App = () => {
         setExchangeRates([]);
         return;
       }
+
+      setHasInteracted(true);
+
       const fetchExchangeRates = async () => {
         setLoading(true);
         if (cache[baseCurrency]) {
-          console.log('cached');
           setExchangeRates(cache[baseCurrency]);
           setLoading(false);
           return;
         }
         setLoading(true);
         try {
-          console.log('entra no try');
           const pairs = [
             `${baseCurrency}-AUD`,
             `${baseCurrency}-BAT`,
@@ -76,11 +77,10 @@ const App = () => {
           ].filter(
             (pair) => !pair.startsWith(`${baseCurrency}-${baseCurrency}`)
           );
+
           const promises = pairs.map((pair) => sdk.getTicker(pair));
           const responses = await Promise.all(promises);
-          // if (!cache[baseCurrency]) {
           setExchangeRates(responses);
-          // }
           setCache((prevCache) => {
             const newCache = { ...prevCache, [baseCurrency]: responses };
 
@@ -107,7 +107,6 @@ const App = () => {
   );
 
   const handleAmountChange = (event) => {
-    console.log(event.target.value);
     setAmount(event.target.value);
   };
 
@@ -136,7 +135,7 @@ const App = () => {
         </div>
         <p className="helper-text">Enter an amount to check the rates.</p>
         <div className="rates-container">
-          {loading ? (
+          {loading && hasInteracted ? (
             <p className="loading-text">Loading exchange rates...</p>
           ) : (
             <div className="rates-list">

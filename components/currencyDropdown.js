@@ -28,6 +28,13 @@ const CurrencyDropdown = ({ currencies, baseCurrency, setBaseCurrency }) => {
             <span>{baseCurrency}</span>
           </div>
         )}
+        <Image
+          src="/assets/dropdown-icon.svg"
+          alt="Dropdown Icon"
+          width={12}
+          height={12}
+          className="dropdown-arrow"
+        />
       </button>
       {isOpen && (
         <div className="dropdown-menu">
